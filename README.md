@@ -20,7 +20,7 @@ Or
 
 First you should define some Events lets start with a simple example:
 
-```
+```php
 define("IDLE_STATE", "idle");  
 define("CLEAN_STATE", "cleaning");  
 define("DOOR_CLOSED_EVENT", "doorcloses");  
@@ -30,7 +30,7 @@ define("ITSSIXOCLOCK_EVENT", "sixoclock");
 These are basically two States and events.
 Now its time to program the automaton. This is quite easy and works like that:
 
-```
+```php
 $rules = [  
  ["oldState" => IDLE_STATE, "event" => new Events([new Event(DOOR_CLOSED_EVENT), new Event(ITSSIXOCLOCK_EVENT)]), "action" => $startRobo, "newState" => CLEAN_STATE],  
   ["oldState" => CLEAN_STATE, "event" => new Event(DOOR_CLOSED_EVENT), "action" => $stopRobo, "newState" => IDLE_STATE],  
@@ -40,7 +40,7 @@ $rules = [
 You see? 
 If the automaton is in Idle State and the two above defined events came in we let the library trigger the "startRobo" callback and transit to the next state "CLEAN_STATE". If we are in the CLEAN_STATE and the door closed event comes in, we trigger a stopRobo callback and go back to the Idle state.
 
-```
+```php
 $startRobo = function (Event $event) {  
   $this->assertEquals(ITSSIXOCLOCK_EVENT, $event->identifier);  
 };  
@@ -53,7 +53,7 @@ These are the two callbacks from the Test Case. They get executed if the above m
 
 Using the actual state automaton is as simple as:
 
-```
+```php
 $this->stateAutomaton = new StateAutomaton(IDLE_STATE);  
 $this->broker = new Broker($this->stateAutomaton);
 $this->stateAutomaton->addRules($rules);
