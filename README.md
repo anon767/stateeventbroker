@@ -27,7 +27,7 @@ define("DOOR_CLOSED_EVENT", "doorcloses");
 define("ITSSIXOCLOCK_EVENT", "sixoclock"); 
 ```
 
-These are basically two States and three events.
+These are basically two States and events.
 Now its time to program the automaton. This is quite easy and works like that:
 
 ```
