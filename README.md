@@ -1,6 +1,21 @@
 # Advanced Eventdriven State Automaton
 This Library provides managing state and state-transitions. It applies rules by considering the current state and the incoming events. It can handle multiple events aswell what makes it actually a pushdown automaton.
 
+## Install
+
+```
+composer require anon767/stateeventbroker
+```
+
+Or
+
+```
+"require": {
+    "anon767/stateeventbroker": "*"
+  }
+```
+
+
 ## Usage
 
 First you should define some Events lets start with a simple example:
